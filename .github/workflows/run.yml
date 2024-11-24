@@ -25,4 +25,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
-    - run: node index.js
+    - name: Run bot
+      env:
+        PORT: 8080
+        run: node index.js
+
