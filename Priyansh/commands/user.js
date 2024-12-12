@@ -70,7 +70,7 @@ module.exports.handleReaction = async ({ event, api, Users, handleReaction, getT
 	const { threadID } = event;
 	const { messageID, type, targetID, reason, commandNeedBan, nameTarget } = handleReaction;
 	
-	const time = moment.tz("Asia/Ho_Chi_minh").format("HH:MM:ss L");
+	const time = moment.tz("Asia/Kolkata").format("HH:MM:ss L");
 	global.client.handleReaction.splice(global.client.handleReaction.findIndex(item => item.messageID == messageID), 1);
 	
 	switch (type) {
