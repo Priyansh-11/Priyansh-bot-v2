@@ -23,7 +23,7 @@ module.exports.languages = {
 module.exports.run = async ({ api, event, args, getText, Users }) => {
   const name = await Users.getNameUser(event.senderID)
 const moment = require("moment-timezone");
-      var gio = moment.tz("Asia/Dhaka").format("DD/MM/YYYY || HH:mm:s");  
+      var gio = moment.tz("Asia/Kolkata").format("DD/MM/YYYY || HH:mm:s");  
 if (event.type == "message_reply") {
 const request = global.nodemodule["request"];
 const fs = require('fs')
