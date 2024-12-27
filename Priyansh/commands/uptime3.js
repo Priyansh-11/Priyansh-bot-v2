@@ -1,147 +1,112 @@
-const fbname = "SaikiDesu";
-const githubname = "mraikero-01";
-module.exports.config = {
-	name:"upt2",
-	version: "1.0.0",
-	hasPermssion: 0,
-	credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
-	description: "Random ảnh theo api - uptime",
-	commandCategory: "Bot-system",
-	cooldowns: 3,
-  dependencies: {
-		"pidusage": ""
-	}
-};
-function byte2mb(bytes) {
-	const units = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-	let l = 0, n = parseInt(bytes, 10) || 0;
-	while (n >= 1024 && ++l) n = n / 1024;
-	return `${n.toFixed(n < 10 && l > 0 ? 1 : 0)} ${units[l]}`;
-}
-module.exports.run = async ({ api, event, args }) => {
-const time = process.uptime(),
-		hours = Math.floor(time / (60 * 60)),
-		minutes = Math.floor((time % (60 * 60)) / 60),
-		seconds = Math.floor(time % 60);
-  var z_1 = (hours < 10) ? '0' + hours : hours;
-    var x_1 = (minutes < 10) ? '0' + minutes : minutes;
-    var y_1 = (seconds < 10) ? '0' + seconds : seconds;
-    const axios = require('axios')
-	const pidusage = await global.nodemodule["pidusage"](process.pid);
-	const timeStart = Date.now();
-  const fs = require('fs-extra');
-  const moment = require("moment-timezone");
-  const timeNow = moment.tz("Asia/Manila").format("DD/MM/YYYY || HH:mm:ss");
-   if (!fs.existsSync(__dirname + `/tad/Grandstander-Bold.ttf`)) {
-    let getfont2 = (await axios.get(`https://github.com/hanakuUwU/font/raw/main/Grandstander-Bold.ttf`, { responseType: "arraybuffer" })).data;
-    fs.writeFileSync(__dirname + `/tad/Grandstander-Bold.ttf`, Buffer.from(getfont2, "utf-8"));
-  };
-   const { loadImage, createCanvas, registerFont } = require("canvas");
-  
-  let k = args[0];
-   if(args[0] == "list"){
-    const alime = (await axios.get('https://raw.githubusercontent.com/mraikero-01/saikidesu_data/main/anilist2.json')).data
-    var count = alime.listAnime.length;
-      var data = alime.listAnime
-      var page = 1;
-      page = parseInt(args[1]) || 1;
-      page < -1 ? page = 1 : "";
-      var limit = 20;
-      var numPage = Math.ceil(count/limit);
-      var msg = ``;
-      for(var i = limit*(page - 1); i < limit*(page-1) + limit; i++){
-         if(i >= count) break;
-        msg += `[ ${i+1} ] - ${data[i].ID} | ${data[i].name}\n`;
-      }
-      msg += `Trang (${page}/${numPage})\nDùng ${global.config.PREFIX}${this.config.name} list <số trang>`;
-      return api.sendMessage(msg, event.threadID,event.messageID);
-   }
-  if(!k){
-  var id = Math.floor(Math.random() * 848) +1
-  } else {
-    var id = k
-  }
-    const lengthchar = (await axios.get('https://run.mocky.io/v3/0dcc2ccb-b5bd-45e7-ab57-5dbf9db17864')).data
-    console.log(lengthchar.length)
-  const Canvas = require('canvas');
-   let pathImg = __dirname + `/tad/avatar_115.png`;
-    let pathAva = __dirname + `/tad/avatar_223.png`;
-    let pathLine = __dirname + `/tad/avatar_343.png`;
-     let pathIcon = __dirname + `/tad/avatar_3ds23c12311.png`;
-    let pathIconIG = __dirname + `/tad/sssss.png`;
-    let pathIcongithub = __dirname + `/tad/owo.png`;
-    let icon3 = (await axios.get(encodeURI(`https://imgur.com/u8UU1cb.png`), { responseType: "arraybuffer" })).data;
-    fs.writeFileSync(pathIcongithub, Buffer.from(icon3, "utf-8"));
-     let icon = (await axios.get(encodeURI(`https://imgur.com/TEAVHvA.png`), { responseType: "arraybuffer" })).data;
-    fs.writeFileSync(pathIcon, Buffer.from(icon, "utf-8"));
-    let icon2 = (await axios.get(encodeURI(`https://imgur.com/pJnSU7m.png`), { responseType: "arraybuffer" })).data;
-    fs.writeFileSync(pathIconIG, Buffer.from(icon2, "utf-8"));
-    let avtAnime = (
-      await axios.get(encodeURI(`${lengthchar[id].imgAnime}`), { responseType: "arraybuffer" })).data;
-    fs.writeFileSync(pathAva, Buffer.from(avtAnime, "utf-8"));
-         let background = (await axios.get(encodeURI(`https://imgur.com/1QncZxH.png`), { responseType: "arraybuffer" })).data;
-    fs.writeFileSync(pathImg, Buffer.from(background, "utf-8"));
- let line = (await axios.get(encodeURI(`https://imgur.com/1iWNkmi.png`), { responseType: "arraybuffer" })).data;
-    fs.writeFileSync(pathLine, Buffer.from(line, "utf-8"));
-    const request = require('request');
-    const path = require('path');
+const os = require("os");
+const fs = require("fs-extra");
 
-  //const a = Math.floor(Math.random() * 820) + 1
-  
-  
-let a = await loadImage(pathAva)
-    let a1 = await loadImage(pathImg)
-    let a2 = await loadImage(pathLine)
-    let g = await loadImage(pathIcon);
-    let r = await loadImage(pathIconIG);
-    let o = await loadImage(pathIcongithub);
-    let canvas = createCanvas(a1.width, a1.height);
-    let
-      ctx = canvas.getContext("2d");
-    ctx.fillStyle = lengthchar[id].colorBg;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(a1, 0, 0, canvas.width, canvas.height);
-    ctx.drawImage(a2, 2000, 200, a2.width, a2.height);
-    ctx.drawImage(g, 800, 2500, 350, 350);
-    ctx.drawImage(o, 1100, 2800, 550, 550);
-    ctx.drawImage(r, 1600, 3350, 350, 350);
-    ctx.drawImage(a, 4000, -590, 5300, 5300);
-    Canvas.registerFont(__dirname + `/tad/Grandstander-Bold.ttf`, {
-      family: "Grandstander"
-    });
-    ctx.textAlign = "center";
-    ctx.font = "750px Grandstander";
-    ctx.fillStyle = "#FFF"
-    ctx.fillText("Eri Bot", canvas.width /  2 - 660, 1600);
-    ctx.save();
-    ctx.font = "350px Grandstander";
-    ctx.fillStyle = "#000"
-    ctx.fillText("𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭", canvas.width / 2 - 660, 1000);
-    ctx.fillText(`${z_1}:${x_1}:${y_1}`, canvas.width / 2 - 630, 2000);
-    ctx.restore();
-    ctx.save();
-    ctx.textAlign = "start";
-    ctx.font = "250px Grandstander";
-    ctx.fillStyle = "#000"
-    ctx.fillText("priyanshu.rajput.official", 1200, 2750);
-    ctx.fillStyle = "#FFF"
-    ctx.fillText("priyanshu192", 1600, 3150);
-    ctx.fillStyle = "#000"
-   ctx.fillText("pri_yanshu12", 2000, 3600);
-    ctx.beginPath();
-    const imageBuffer = canvas.toBuffer();
-    fs.writeFileSync(pathImg, imageBuffer);
-  return api.sendMessage({
-    body: `==={ UPTIME ROBOT }===\nBot worked ${hours} hours ${minutes} minutes ${seconds} seconds\n\nTotal Users: ${global.data.allUserID.length}\nTotal Group : ${global.data.allThreadID.length}\nCPU in use: ${pidusage.cpu.toFixed(1)}%\nRam in use : ${byte2mb(pidusage.memory)}\nPing: ${Date.now() - timeStart}ms\nCharacter ID: ${id}\n━━━━━━━━━━━━━━\n[ ${timeNow} ]`,
-    attachment: fs.createReadStream(pathImg)
+const startTime = new Date(); // Moved outside onStart
+
+module.exports = {
+  config: {
+    name: "uptime3",
+    version: "1.0.0",
+    hasPermssion: 0,
+    credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
+    description: "test",
+    commandCategory: "box",
+    usages: "test",
+    prefix: "false",
+    dependencies: {},
+    cooldowns: 5
   },
-    event.threadID,
-    () => fs.unlinkSync(pathImg),
-    fs.unlinkSync(pathAva),
-    fs.unlinkSync(pathLine),
-    fs.unlinkSync(pathIconIG),    
-    fs.unlinkSync(pathIcongithub),
-    fs.unlinkSync(pathIcon),
-    event.messageID
-  );
-}
+
+  run: async function ({ api, event, args }) {
+    try {
+      const uptimeInSeconds = (new Date() - startTime) / 1000;
+
+      const seconds = uptimeInSeconds;
+      const days = Math.floor(seconds / (3600 * 24));
+      const hours = Math.floor((seconds % (3600 * 24)) / 3600);
+      const minutes = Math.floor((seconds % 3600) / 60);
+      const secondsLeft = Math.floor(seconds % 60);
+      const uptimeFormatted = `${days}d ${hours}h ${minutes}m ${secondsLeft}s`;
+
+      const loadAverage = os.loadavg();
+      const cpuUsage =
+        os
+          .cpus()
+          .map((cpu) => cpu.times.user)
+          .reduce((acc, curr) => acc + curr) / os.cpus().length;
+
+      const totalMemoryGB = os.totalmem() / 1024 ** 3;
+      const freeMemoryGB = os.freemem() / 1024 ** 3;
+      const usedMemoryGB = totalMemoryGB - freeMemoryGB;
+
+     // const allUsers = await usersData.getAll();
+     // const allThreads = await threadsData.getAll();
+      const currentDate = new Date();
+      const options = { year: "numeric", month: "numeric", day: "numeric" };
+      const date = currentDate.toLocaleDateString("en-US", options);
+      const time = currentDate.toLocaleTimeString("en-US", {
+        timeZone: "Asia/Kolkata",
+        hour12: true,
+      });
+
+      const timeStart = Date.now();
+      await api.sendMessage({
+        body: "🔎| checking........",
+      }, event.threadID);
+
+      const ping = Date.now() - timeStart;
+
+      let pingStatus = "⛔| 𝖡𝖺𝖽 𝖲𝗒𝗌𝗍𝖾𝗆";
+      if (ping < 1000) {
+        pingStatus = "✅| 𝖲𝗆𝗈𝗈𝗍𝗁 𝖲𝗒𝗌𝗍𝖾𝗆";
+      }
+      const systemInfo = `♡   ∩_∩
+ （„• ֊ •„)♡
+╭─∪∪────────────⟡
+│ 𝗨𝗣𝗧𝗜𝗠𝗘 𝗜𝗡𝗙𝗢
+├───────────────⟡
+│ ⏰ 𝗥𝗨𝗡𝗧𝗜𝗠𝗘
+│  ${uptimeFormatted}
+├───────────────⟡
+│ 👑 𝗦𝗬𝗦𝗧𝗘𝗠 𝗜𝗡𝗙𝗢
+│𝙾𝚂: ${os.type()} ${os.arch()}
+│𝙻𝙰𝙽𝙶 𝚅𝙴𝚁: ${process.version}
+│𝙲𝙿𝚄 𝙼𝙾𝙳𝙴𝙻: ${os.cpus()[0].model}
+│𝚂𝚃𝙾𝚁𝙰𝙶𝙴: ${usedMemoryGB.toFixed(2)} GB / ${totalMemoryGB.toFixed(2)} GB
+│𝙲𝙿𝚄 𝚄𝚂𝙰𝙶𝙴: ${cpuUsage.toFixed(1)}%
+│𝚁𝙰𝙼 𝚄𝚂𝙶𝙴: ${process.memoryUsage().heapUsed / 1024 / 1024} MB;
+├───────────────⟡
+│ ✅ 𝗢𝗧𝗛𝗘𝗥 𝗜𝗡𝗙𝗢
+│𝙳𝙰𝚃𝙴: ${date}
+│𝚃𝙸𝙼𝙴: ${time}
+│𝙿𝙸𝙽𝙶: ${ping}𝚖𝚜
+│𝚂𝚃𝙰𝚃𝚄𝚂: ${pingStatus}
+╰───────────────⟡
+`;
+
+      api.sendMessage(
+        {
+          body: systemInfo,
+        },
+        event.threadID,
+        (err, messageInfo) => {
+          if (err) {
+            console.error("Error sending message with attachment:", err);
+          } else {
+            console.log(
+              "Message with attachment sent successfully:",
+              messageInfo,
+            );
+          }
+        },
+      );
+    } catch (error) {
+      console.error("Error retrieving system information:", error);
+      api.sendMessage(
+        "Unable to retrieve system information.",
+        event.threadID,
+        event.messageID,
+      );
+    }
+  },
+};
