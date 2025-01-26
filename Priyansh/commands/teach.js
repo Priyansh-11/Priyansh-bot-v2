@@ -60,7 +60,7 @@ module.exports.handleReply = async({ api, event, Users, handleReply }) => {
             global.client.handleReply.splice(global.client.handleReply.indexOf(handleReply), 1);
             api.unsendMessage(handleReply.messageID);
             let c = content;
-            let res = await axios.get(encodeURI(`https://sim-a9ek.onrender.com/sim?type=teach&ask=${c.ask}&ans=${c.ans}&apikey=PriyanshVip`));
+            let res = await axios.get(encodeURI(`https://sim-api-by-priyansh.glitch.me/sim?type=teach&ask=${c.ask}&ans=${c.ans}&apikey=PriyanshVip`));
             if (res.data.error) return send(`${res.data.error}`);
             send(`[ 𝐒𝐈𝐌 ] - It's a success, previews:\n\n🤤 Data:\n${c.ask} -> ${c.ans}\n\n⏱ Time: ${timeZ}`);
             break;
