@@ -32,7 +32,7 @@ module.exports = {
       songName = args.join(" ");
     } else {
       songName = args.join(" ");
-      type = "audio";
+      type = "video";
     }
 
     const processingMessage = await api.sendMessage(
@@ -55,7 +55,7 @@ module.exports = {
 
       // Construct API URL for downloading the top result
       const apiKey = "priyansh-here";
-      const apiUrl = `https://priyansh-ai.onrender.com/youtube?id=${videoId}&type=video&apikey=${apiKey}`;
+      const apiUrl = `https://priyansh-ai.onrender.com/youtube?id=${videoId}&type=${type}&apikey=${apiKey}`;
 
       api.setMessageReaction("⌛", event.messageID, () => {}, true);
 
