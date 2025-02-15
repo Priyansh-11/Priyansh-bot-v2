@@ -53,6 +53,8 @@
       "crypto": "^1.0.1",
       "crypto-js": "^4.1.1",
       "discord-chatbot": "^2.1.0",
+      "discord-image-generation": "^1.4.13",
+      "discord.js": "^12.5.3",
       "eval": "^0.1.8",
       "express": "^4.19.2",
       "extract-zip": "^2.0.1",
