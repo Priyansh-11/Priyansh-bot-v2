@@ -29,7 +29,7 @@ module.exports.run = async function ({ api, event, args, Users }) {
 
     api.setMessageReaction("⌛", event.messageID, () => { }, true);
 
-    const res = await axios.get(`https://blackboxai-tlh1.onrender.com/api/blackboxai?query=${encodeURIComponent(query)}`);
+    const res = await axios.get(`https://priyansh-ai.onrender.com/api/blackboxai?query=${encodeURIComponent(query)}`);
 
     const data = res.data.priyansh;
 
