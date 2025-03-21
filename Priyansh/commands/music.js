@@ -3,7 +3,6 @@ const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
 const ytSearch = require("yt-search");
-const https = require("https");
 
 module.exports = {
   config: {
@@ -43,61 +42,46 @@ module.exports = {
     );
 
     try {
-      // Search for the song on YouTube
       const searchResults = await ytSearch(songName);
       if (!searchResults || !searchResults.videos.length) {
         throw new Error("No results found for your search query.");
       }
 
-      // Get the top result from the search
       const topResult = searchResults.videos[0];
       const videoId = topResult.videoId;
 
-      // Construct API URL for downloading the top result
       const apiKey = "priyansh-here";
       const apiUrl = `https://priyansh-ai.onrender.com/youtube?id=${videoId}&type=${type}&apikey=${apiKey}`;
 
       api.setMessageReaction("⌛", event.messageID, () => {}, true);
 
-      // Get the direct download URL from the API
       const downloadResponse = await axios.get(apiUrl);
       const downloadUrl = downloadResponse.data.downloadUrl;
 
-      // Set the filename based on the song title and type
-      const safeTitle = topResult.title.replace(/[^a-zA-Z0-9 \-_]/g, ""); // Clean the title
+      const safeTitle = topResult.title.replace(/[^a-zA-Z0-9 \-_]/g, "");
       const filename = `${safeTitle}.${type === "audio" ? "mp3" : "mp4"}`;
-      const downloadDir = path.join(__dirname, "cache");
-      const downloadPath = path.join(downloadDir, filename);
+      const downloadPath = path.join(__dirname, "cache", filename);
 
-      // Ensure the directory exists
-      if (!fs.existsSync(downloadDir)) {
-        fs.mkdirSync(downloadDir, { recursive: true });
+      if (!fs.existsSync(path.dirname(downloadPath))) {
+        fs.mkdirSync(path.dirname(downloadPath), { recursive: true });
       }
 
-      // Download the file and save locally
-      const file = fs.createWriteStream(downloadPath);
+      const response = await axios({
+        url: downloadUrl,
+        method: "GET",
+        responseType: "stream",
+      });
+
+      const fileStream = fs.createWriteStream(downloadPath);
+      response.data.pipe(fileStream);
 
       await new Promise((resolve, reject) => {
-        https.get(downloadUrl, (response) => {
-          if (response.statusCode === 200) {
-            response.pipe(file);
-            file.on("finish", () => {
-              file.close(resolve);
-            });
-          } else {
-            reject(
-              new Error(`Failed to download file. Status code: ${response.statusCode}`)
-            );
-          }
-        }).on("error", (error) => {
-          fs.unlinkSync(downloadPath);
-          reject(new Error(`Error downloading file: ${error.message}`));
-        });
+        fileStream.on("finish", resolve);
+        fileStream.on("error", reject);
       });
 
       api.setMessageReaction("✅", event.messageID, () => {}, true);
 
-      // Send the downloaded file to the user
       await api.sendMessage(
         {
           attachment: fs.createReadStream(downloadPath),
@@ -107,7 +91,7 @@ module.exports = {
         },
         event.threadID,
         () => {
-          fs.unlinkSync(downloadPath); // Cleanup after sending
+          fs.unlinkSync(downloadPath);
           api.unsendMessage(processingMessage.messageID);
         },
         event.messageID
