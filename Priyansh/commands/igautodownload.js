@@ -1,4 +1,4 @@
-const instagramGetUrl = require("priyansh-ig-downloader");
+const instagramGetUrl = require("priyansh-all-dl");
 const axios = require("axios");
 const fs = require("fs-extra");
 const tempy = require('tempy');
@@ -13,7 +13,7 @@ module.exports.config = {
     usages: "[Instagram video URL]",
     cooldowns: 5,
     dependencies: {
-        "priyansh-ig-downloader": "latest",
+        "priyansh-all-dl": "latest",
         "axios": "0.21.1",
         "fs-extra": "10.0.0",
         "tempy": "0.4.0"
@@ -26,7 +26,7 @@ module.exports.handleEvent = async function({ api, event }) {
             try {
 
             const videoInfo = await instagramGetUrl(event.body);
-            const hdLink = videoInfo.video[0].video;
+            const hdLink = videoInfo.video;
             const response = await axios.get(hdLink, { responseType: 'stream' });
             const tempFilePath = tempy.file({ extension: 'mp4' });
             const writer = fs.createWriteStream(tempFilePath);
