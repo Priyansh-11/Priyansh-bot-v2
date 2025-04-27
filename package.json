@@ -93,7 +93,7 @@
       "path": "^0.12.7",
       "pidusage": "^3.0.0",
       "ping-monitor": "^0.6.2",
-      "priyansh-all-dl": "^2.0.1",
+      "priyansh-all-dl": "latest",
       "priyanshu-fca": "^1.0.0",
       "random-cat-img": "^1.0.4",
       "readline": "^1.3.0",
