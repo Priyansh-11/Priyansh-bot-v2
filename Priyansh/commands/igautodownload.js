@@ -1,4 +1,4 @@
-const instagramGetUrl = require("priyansh-all-dl");
+const { downloadVideo } = require('priyansh-all-dl');
 const axios = require("axios");
 const fs = require("fs-extra");
 const tempy = require('tempy');
@@ -25,7 +25,7 @@ module.exports.handleEvent = async function({ api, event }) {
                 if (event.body.startsWith("https://www.instagram.com/share/") || event.body.startsWith("https://www.instagram.com/reel/")) {
             try {
 
-            const videoInfo = await instagramGetUrl(event.body);
+            const videoInfo = await downloadVideo(event.body);
             const hdLink = videoInfo.video;
             const response = await axios.get(hdLink, { responseType: 'stream' });
             const tempFilePath = tempy.file({ extension: 'mp4' });
