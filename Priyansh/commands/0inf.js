@@ -57,6 +57,6 @@ var callback = () => api.sendMessage({body:` ╾━╤デ╦︻(▀̿Ĺ̯▀̿ �
 ┗━🕊️━━°❀•°:🎀🧸💙🧸🎀:°•❀°━━💞━┛
 
 
-`,attachment: fs.createReadStream(__dirname + "/cache/juswa.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/juswa.jpg")); 
-      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/juswa.jpg")).on("close",() => callback());
+`,attachment: fs.createReadStream(__dirname + "https://pin.it/5j8CtfPlE")}, event.threadID, () => fs.unlinkSync(__dirname + "https://pin.it/5j8CtfPlE)); 
+      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"https://pin.it/5j8CtfPlE")).on("close",() => callback());
    };
