@@ -24,23 +24,23 @@ const time = process.uptime(),
 const moment = require("moment-timezone");
 var juswa = moment.tz("Asia/Dhaka").format("『D/MM/YYYY』 【HH:mm:ss】");
 var link =                                     
-["https://i.imghippo.com/files/lJ8376Tkc.jpg"];
+["https://www.imghippo.com/i/CLDD1260dJ.jpg"];
 var callback = () => api.sendMessage({body:` ╾━╤デ╦︻(▀̿Ĺ̯▀̿ ̿)🇮🇳 𝐀𝐃𝐌𝐈𝐍 𝐀𝐍𝐃 𝐁𝐎𝐓 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍 🇮🇳 
 (⌐▀͡ ̯ʖ▀)︻̷┻̿═━一-
 
 ☄️Bot Name︎︎︎☄️  ${global.config.BOTNAME}
 
-🔥Bot Admin🔥☞︎︎︎☜︎︎︎✰ ℙ𝕣𝕚𝕪𝕒𝕟𝕤𝕙💔🥀
+🔥Bot Admin🔥☞︎︎︎☜︎︎︎✰ 𝔽𝕌𝔾𝔸𝕃 𝕊ℍ𝔸ℝ𝕄𝔸💔🥀
 
-🙈bot andmin owner facebook id link🙈➪ www.facebook.com/priyanshu.rajput.official 💞🕊️
+🙈bot andmin owner facebook id link🙈➪ https://www.facebook.com/Fugal.x3.Parchi 💞🕊️
 
-👋For Any Kind Of Help Contact On Telegram  Username 👉 @Priyanshrajput😇
+👋For Any Kind Of Help Contact On Telegram  Username 👉 @Amar_hai_hmm_garib_ho_tum😇
 
 ✧══════•❁❀❁•══════✧
 
 🌸Bot Prefix🌸☞︎︎︎☜︎︎︎✰ ${global.config.PREFIX}
 
-♥️Bot Owner♥️ ☞︎︎︎☜︎︎︎✰ 𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭
+♥️Bot Owner♥️ ☞︎︎︎☜︎︎︎✰ FUGAL SHARMA
 
 🥳UPTIME🥳
 
@@ -48,15 +48,15 @@ var callback = () => api.sendMessage({body:` ╾━╤デ╦︻(▀̿Ĺ̯▀̿ �
 
 ⚡Bot is running⚡ ${hours}:${minutes}:${seconds}.
 
-✅Thanks for using ${global.config.BOTNAME} Bot🖤
+✅Thanks for using ${global.config.BOTNAME} BABBS🖤
 
 
 🦢🍒•••ꞪɛᏒɛ ɪʂ ɮ❍┼ ❍ωɳɜɽ ɳaʍɜ•••🌷💞
 ┏━🕊️━━°❀•°:🎀🧸💙🧸🎀:°•❀°━━💞━┓
-🌸✦✧✧✧✧✰🍒ℙ𝕣𝕚𝕪𝕒𝕟𝕤𝕙🌿✰✧✧✧✧✦🌸
+🌸✦✧✧✧✧✰🍒 𝔽𝕌𝔾𝔸𝕃 🌿✰✧✧✧✧✦🌸
 ┗━🕊️━━°❀•°:🎀🧸💙🧸🎀:°•❀°━━💞━┛
 
 
-`,attachment: fs.createReadStream(__dirname + "/cache/juswa.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/juswa.jpg")); 
-      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/juswa.jpg")).on("close",() => callback());
+`,attachment: fs.createReadStream(__dirname + "https://pin.it/5j8CtfPlE")}, event.threadID, () => fs.unlinkSync(__dirname + "https://pin.it/5j8CtfPlE)); 
+      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"https://pin.it/5j8CtfPlE")).on("close",() => callback());
    };
